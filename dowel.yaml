@@ -1,0 +1,90 @@
+object_name: Dowel
+
+robot:
+  ip: "192.168.58.2"
+  tool: 0
+  user: 0
+  vel: 20.0
+  acc: 0.0
+  ovl: 100.0
+  blendT: -1.0
+  blendR: -1.0
+
+relay:
+  ip: "192.168.1.100"
+  port: 502
+  unit_id: 1
+  timeout: 3
+  max_channels: 30
+  enabled_channels: [1, 2, 3, 4]
+
+camera:
+  serial_number: ""
+  output_dir: "captures/object_1"
+  lighting_delay_sec: 0.5
+  frame_timeout_ms: 2000
+
+# =====================================================================
+# 8 COBOT JOINT POSITIONS (Load 1 -> Camera 1 -> Camera 2 -> Load 1)
+# Replace joints: [J1, J2, J3, J4, J5, J6] (in degrees) for each step.
+# =====================================================================
+inspection_positions:
+  position_1:
+    label: "Load 1 (Pick / Start)"
+    move_type: "MoveJ"
+    capture: false
+    joints: [0.0, -45.0, 90.0, -45.0, 90.0, 0.0]      # <-- Replace Position 1 joints [J1..J6]
+    tolerance_deg: 2.0
+
+  position_2:
+    label: "Safe Waypoint 1 (Depart Load 1)"
+    move_type: "MoveJ"
+    capture: false
+    joints: [10.0, -40.0, 80.0, -40.0, 90.0, 0.0]     # <-- Replace Position 2 joints [J1..J6]
+    tolerance_deg: 2.0
+
+  position_3:
+    label: "Safe Waypoint 2 (Approach Camera 1)"
+    move_type: "MoveJ"
+    capture: false
+    joints: [20.0, -35.0, 70.0, -35.0, 90.0, 0.0]     # <-- Replace Position 3 joints [J1..J6]
+    tolerance_deg: 2.0
+
+  position_4:
+    label: "Camera 1 Inspection"
+    move_type: "MoveJ"
+    capture: true
+    joints: [30.0, -30.0, 60.0, 0.0, 30.0, 0.0]       # <-- Replace Position 4 (Camera 1) joints [J1..J6]
+    tolerance_deg: 2.0
+    lights: [1, 2]
+    exposure_time_us: 10000
+
+  position_5:
+    label: "Safe Waypoint 3 (Camera 1 to Camera 2)"
+    move_type: "MoveJ"
+    capture: false
+    joints: [40.0, -28.0, 58.0, 0.0, 32.0, 45.0]      # <-- Replace Position 5 joints [J1..J6]
+    tolerance_deg: 2.0
+
+  position_6:
+    label: "Camera 2 Inspection"
+    move_type: "MoveJ"
+    capture: true
+    joints: [50.0, -25.0, 55.0, 0.0, 35.0, 90.0]      # <-- Replace Position 6 (Camera 2) joints [J1..J6]
+    tolerance_deg: 2.0
+    lights: [3, 4]
+    exposure_time_us: 20000
+
+  position_7:
+    label: "Safe Waypoint 4 (Return to Load 1)"
+    move_type: "MoveJ"
+    capture: false
+    joints: [20.0, -38.0, 78.0, -40.0, 90.0, 0.0]     # <-- Replace Position 7 joints [J1..J6]
+    tolerance_deg: 2.0
+
+  position_8:
+    label: "Load 1 (Return / Place)"
+    move_type: "MoveJ"
+    capture: false
+    joints: [0.0, -45.0, 90.0, -45.0, 90.0, 0.0]      # <-- Replace Position 8 joints [J1..J6]
+    tolerance_deg: 2.0
