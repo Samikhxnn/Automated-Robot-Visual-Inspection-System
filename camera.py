@@ -4,7 +4,7 @@ import ctypes
 from datetime import datetime
 from ctypes import (
     byref, c_ubyte, c_void_p, cast, POINTER, sizeof, memset
-)
+) 
 
 import cv2
 import numpy as np
