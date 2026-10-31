@@ -7,7 +7,7 @@ Automated 6-DOF cobot visual inspection platform orchestrating Fairino robotics,
 ![Vision](https://img.shields.io/badge/Vision-Hikrobot%20MVS%20%7C%20OpenCV-22c55e)
 ![Protocol](https://img.shields.io/badge/Protocol-Modbus%20TCP%2FIP-f59e0b)
 
-**SAMI** is an industrial robotic optical inspection platform that coordinates a **6-DOF Fairino collaborative robot**, **Hikrobot GigE/USB3 machine vision cameras**, and a **30-channel Modbus TCP lighting relay** through declarative YAML part profiles and a real-time **Operator Web HMI**.
+**This** is an industrial robotic optical inspection platform that coordinates a **6-DOF Fairino collaborative robot**, **Hikrobot GigE/USB3 machine vision cameras**, and a **30-channel Modbus TCP lighting relay** through declarative YAML part profiles and a real-time **Operator Web HMI**.
 
 ---
 
